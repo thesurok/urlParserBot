@@ -4,7 +4,7 @@ const Parser = require('./Parser');
 const parser = new Parser();
 
 const { Telegraf } = require('telegraf');
-const { BOT_TOKEN } = process.env;
+const { BOT_TOKEN, BOT_DOMAIN } = process.env;
 
 const bot = new Telegraf(BOT_TOKEN);
 
@@ -21,11 +21,11 @@ bot.on('text', (ctx) => {
         });
 });
 
-try {
-    bot.launch();
-} catch (error) {
-    console.log(error);
-}
-
+bot.launch({
+    webhook: {
+        domain: BOT_DOMAIN,
+        port: Number(process.env.PORT),
+    }
+})
 
 

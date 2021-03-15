@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const Parser = require('./Parser');
 const parser = new Parser();

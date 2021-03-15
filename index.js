@@ -6,13 +6,15 @@ const parser = new Parser();
 const { Telegraf } = require('telegraf');
 const { BOT_TOKEN, BOT_DOMAIN } = process.env;
 
+console.log(THROWAWAY_TOKEN);
+console.log(THROWAWAY_TOKEN === '1639388823:AAEJfhDqKeiYyznBbyDArdGo2c8SH6PPBj4');
+
 const bot = new Telegraf('1639388823:AAEJfhDqKeiYyznBbyDArdGo2c8SH6PPBj4');
 
 parser.init();
 
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
-    ctx.reply("hello");
     parser.parseUrls(text).then((res, rej) => {
         ctx.replyWithHTML(res);
     })

@@ -12,12 +12,13 @@ const bot = new Composer;
 
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
-    parser.parseUrls(text).then((res, rej) => {
-        ctx.replyWithHTML(res, Extra.webPreview(false));
-    })
-        .catch(err => {
-            ctx.reply("ERROR!");
-        });
+    ctx.reply("test");
+    // parser.parseUrls(text).then((res, rej) => {
+    //     ctx.replyWithHTML(res, Extra.webPreview(false));
+    // })
+    //     .catch(err => {
+    //         ctx.reply("ERROR!");
+    //     });
 });
 
 module.exports = bot;

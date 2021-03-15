@@ -12,13 +12,14 @@ parser.init();
 
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
-    parser.parseUrls(text).then((res, rej) => {
-        ctx.replyWithHTML(res);
-    })
-        .catch(err => {
-            console.log(err);
-            ctx.reply("ERROR!");
-        });
+    ctx.reply("hello");
+    // parser.parseUrls(text).then((res, rej) => {
+    //     ctx.replyWithHTML(res);
+    // })
+    //     .catch(err => {
+    //         console.log(err);
+    //         ctx.reply("ERROR!");
+    //     });
 });
 
 bot.launch({

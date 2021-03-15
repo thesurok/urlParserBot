@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "eval $(cat .env.yaml) node index"
+    "start": "micro-bot"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "micro-bot": "^2.5.3",
     "moment": "^2.29.1",
-    "puppeteer": "^8.0.0",
-    "telegraf": "3.38.0"
+    "puppeteer": "^8.0.0"
   }
 }

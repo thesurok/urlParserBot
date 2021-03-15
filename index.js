@@ -4,10 +4,11 @@ const Parser = require('./Parser');
 const parser = new Parser();
 parser.init();
 
-const { Telegraf, Extra } = require('telegraf');
-const { GOOGLE_CLOUD_PROJECT_ID, TELEGRAM_BOT_TOKEN, GOOGLE_CLOUD_REGION } = process.env;
+// const { Telegraf, Extra } = require('telegraf');
+const { Composer } = require('micro-bot');
+// const { GOOGLE_CLOUD_PROJECT_ID, TELEGRAM_BOT_TOKEN, GOOGLE_CLOUD_REGION } = process.env;
 
-const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+const bot = new Composer;
 
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
@@ -19,7 +20,9 @@ bot.on('text', (ctx) => {
         });
 });
 
-bot.launch();
+module.exports = bot;
+
+// bot.launch();
 
 // bot.telegram.setWebhook(
 //     `https://${GOOGLE_CLOUD_REGION}-${GOOGLE_CLOUD_PROJECT_ID}.cloudfunctions.net/${process.env.FUNCTION_TARGET}` //FUNCTION_TARGET is reserved Google Cloud Env
@@ -28,4 +31,7 @@ bot.launch();
 // exports.telegramBotWebhook = (req, res) => {
 //     bot.handleUpdate(req.body, res);
 // };
+
+// stark-bastion-63584
+// https://stark-bastion-63584.herokuapp.com/
 

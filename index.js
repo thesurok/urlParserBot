@@ -9,7 +9,7 @@ const { BOT_TOKEN, BOT_DOMAIN, THROWAWAY_TOKEN } = process.env;
 console.log(THROWAWAY_TOKEN);
 console.log(THROWAWAY_TOKEN === '1639388823:AAEJfhDqKeiYyznBbyDArdGo2c8SH6PPBj4');
 
-const bot = new Telegraf('1639388823:AAEJfhDqKeiYyznBbyDArdGo2c8SH6PPBj4');
+const bot = new Telegraf(THROWAWAY_TOKEN);
 
 parser.init();
 

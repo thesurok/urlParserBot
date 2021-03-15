@@ -1,8 +1,8 @@
-require('dotenv').config();
+// require('dotenv').config();
 
-const Parser = require('./Parser');
-const parser = new Parser();
-parser.init();
+// const Parser = require('./Parser');
+// const parser = new Parser();
+// parser.init();
 
 // const { Telegraf, Extra } = require('telegraf');
 const { Composer } = require('micro-bot');
@@ -10,16 +10,20 @@ const { Composer } = require('micro-bot');
 
 const bot = new Composer;
 
-bot.on('text', (ctx) => {
-    const { text } = ctx.message;
-    ctx.reply("test");
-    // parser.parseUrls(text).then((res, rej) => {
-    //     ctx.replyWithHTML(res, Extra.webPreview(false));
-    // })
-    //     .catch(err => {
-    //         ctx.reply("ERROR!");
-    //     });
-});
+bot.start((ctx) => {
+    ctx.reply("bot started");
+})
+
+// bot.on('text', (ctx) => {
+//     const { text } = ctx.message;
+//     ctx.reply("test");
+//     // parser.parseUrls(text).then((res, rej) => {
+//     //     ctx.replyWithHTML(res, Extra.webPreview(false));
+//     // })
+//     //     .catch(err => {
+//     //         ctx.reply("ERROR!");
+//     //     });
+// });
 
 module.exports = bot;
 

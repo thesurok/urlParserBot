@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const Parser = require('./Parser');
 const parser = new Parser();
@@ -6,7 +6,7 @@ const parser = new Parser();
 const { Telegraf } = require('telegraf');
 const { BOT_TOKEN, BOT_DOMAIN } = process.env;
 
-const bot = new Telegraf(BOT_TOKEN);
+const bot = new Telegraf('1639388823:AAEJfhDqKeiYyznBbyDArdGo2c8SH6PPBj4');
 
 parser.init();
 
@@ -22,11 +22,6 @@ bot.on('text', (ctx) => {
         });
 });
 
-// bot.launch({
-//     webhook: {
-//         domain: BOT_DOMAIN,
-//         port: Number(process.env.PORT),
-//     }
-// })
+bot.launch();
 
 

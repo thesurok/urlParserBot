@@ -5,10 +5,10 @@ const parser = new Parser();
 parser.init();
 
 const { Telegraf, Extra } = require('telegraf');
-// const { BOT_TOKEN } = process.env;
+const { BOT_TOKEN } = process.env;
 
-// const bot = new Telegraf(BOT_TOKEN);
-// console.log(BOT_TOKEN);
+const bot = new Telegraf(BOT_TOKEN);
+console.log(bot);
 // bot.on('text', (ctx) => {
 //     const { text } = ctx.message;
 //     parser.parseUrls(text).then((res, rej) => {

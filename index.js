@@ -13,20 +13,20 @@ parser.init();
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
     ctx.reply("hello");
-    // parser.parseUrls(text).then((res, rej) => {
-    //     ctx.replyWithHTML(res);
-    // })
-    //     .catch(err => {
-    //         console.log(err);
-    //         ctx.reply("ERROR!");
-    //     });
+    parser.parseUrls(text).then((res, rej) => {
+        ctx.replyWithHTML(res);
+    })
+        .catch(err => {
+            console.log(err);
+            ctx.reply("ERROR!");
+        });
 });
 
-bot.launch({
-    webhook: {
-        domain: BOT_DOMAIN,
-        port: Number(process.env.PORT),
-    }
-})
+// bot.launch({
+//     webhook: {
+//         domain: BOT_DOMAIN,
+//         port: Number(process.env.PORT),
+//     }
+// })
 
 

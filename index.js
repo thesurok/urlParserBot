@@ -21,7 +21,11 @@ function run() {
                 ctx.reply("ERROR!");
             });
     });
-    bot.launch();
+    try {
+        bot.launch();
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 

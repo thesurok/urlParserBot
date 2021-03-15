@@ -22,7 +22,7 @@ function run() {
             });
     });
     console.log("after onText");
-    bot.launch();
+    bot.launch({ polling: { timeout: 1 } });
 }
 
 

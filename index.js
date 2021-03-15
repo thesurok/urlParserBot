@@ -8,24 +8,23 @@ const { BOT_TOKEN } = process.env;
 
 const bot = new Telegraf(BOT_TOKEN);
 
-parser.init().then(run);
+parser.init();
 
-function run() {
-    bot.on('text', (ctx) => {
-        const { text } = ctx.message;
-        parser.parseUrls(text).then((res, rej) => {
-            ctx.replyWithHTML(res);
-        })
-            .catch(err => {
-                console.log(err);
-                ctx.reply("ERROR!");
-            });
-    });
-    try {
-        bot.launch();
-    } catch (error) {
-        console.log(error);
-    }
+bot.on('text', (ctx) => {
+    const { text } = ctx.message;
+    parser.parseUrls(text).then((res, rej) => {
+        ctx.replyWithHTML(res);
+    })
+        .catch(err => {
+            console.log(err);
+            ctx.reply("ERROR!");
+        });
+});
+
+try {
+    bot.launch();
+} catch (error) {
+    console.log(error);
 }
 
 

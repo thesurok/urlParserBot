@@ -8,7 +8,7 @@
 const { Composer } = require('micro-bot');
 // const { GOOGLE_CLOUD_PROJECT_ID, TELEGRAM_BOT_TOKEN, GOOGLE_CLOUD_REGION } = process.env;
 
-const bot = new Composer;
+const bot = new Composer();
 
 bot.start((ctx) => {
     ctx.reply("bot started");

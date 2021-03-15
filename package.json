@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "eval $(cat .env.yaml) node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://https://github.com/thesurok/urlParserBot.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "moment": "^2.29.1",
-    "node-telegram-bot-api": "^0.51.0",
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^8.0.0",
+    "telegraf": "3.38.0"
   }
 }

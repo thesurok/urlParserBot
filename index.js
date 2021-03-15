@@ -1,9 +1,9 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 const Parser = require('./Parser');
 const parser = new Parser();
 
-const { Telegraf, Extra } = require('telegraf');
+const { Telegraf } = require('telegraf');
 const { BOT_TOKEN } = process.env;
 
 const bot = new Telegraf(BOT_TOKEN);
@@ -11,18 +11,17 @@ const bot = new Telegraf(BOT_TOKEN);
 parser.init().then(run);
 
 function run() {
-    console.log("before onText");
     bot.on('text', (ctx) => {
         const { text } = ctx.message;
         parser.parseUrls(text).then((res, rej) => {
-            ctx.replyWithHTML(res, Extra.webPreview(false));
+            ctx.replyWithHTML(res);
         })
             .catch(err => {
+                console.log(err);
                 ctx.reply("ERROR!");
             });
     });
-    console.log("after onText");
-    bot.launch({ polling: { timeout: 1 } });
+    bot.launch();
 }
 
 

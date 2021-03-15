@@ -1,26 +1,30 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 const Parser = require('./Parser');
 const parser = new Parser();
 
 const { Telegraf } = require('telegraf');
-const { BOT_TOKEN, BOT_DOMAIN } = process.env;
+const { BOT_TOKEN } = process.env;
 
 const bot = new Telegraf(BOT_TOKEN);
 
-parser.init();
+parser.init().then(run);
 
-bot.on('text', (ctx) => {
-    const { text } = ctx.message;
-    parser.parseUrls(text).then((res, rej) => {
-        ctx.replyWithHTML(res);
-    })
-        .catch(err => {
-            console.log(err);
-            ctx.reply("ERROR!");
-        });
-});
+function run() {
+    bot.on('text', (ctx) => {
+        const { text } = ctx.message;
+        parser.parseUrls(text).then((res, rej) => {
+            ctx.replyWithHTML(res, { disable_web_page_preview: true });
+        })
+            .catch(err => {
+                console.log(err);
+                ctx.reply("ERROR!");
+            });
+    });
 
-bot.launch();
+    bot.launch();
+}
+
+
 
 

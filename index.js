@@ -8,7 +8,7 @@ const { Telegraf, Extra } = require('telegraf');
 const { BOT_TOKEN } = process.env;
 
 const bot = new Telegraf(BOT_TOKEN);
-
+console.log(BOT_TOKEN);
 bot.on('text', (ctx) => {
     const { text } = ctx.message;
     parser.parseUrls(text).then((res, rej) => {

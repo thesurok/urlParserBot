@@ -12,7 +12,7 @@ parser.init().then(run);
 
 function run() {
     bot.start((ctx) => {
-        ctx.reply(`Привет, ${ctx.from.first_name}! Отправь мне ссылку на предстоящую комнату, и её для тебя красиво отформатирую`);
+        ctx.reply(`Привет, ${ctx.from.first_name}! Отправь мне ссылку(или несколько ссылок) на предстоящую комнату, и я её для тебя красиво отформатирую`);
     });
     bot.on('text', (ctx) => {
         const { text } = ctx.message;

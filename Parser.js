@@ -54,7 +54,8 @@ module.exports = class ClubhouseParser {
     }
 
     async getTitleName() {
-        const titleName = await this.getNodeTextFromXPath('//*[@id="identity_container"]/a/span/div/div/div[2]');
+        let titleName = await this.getNodeTextFromXPath('//*[@id="identity_container"]/a/span/div/div/div[2]');
+        titleName = titleName.replace(/“|”|«|»/gm, '"');
         const boldTitleName = `<b>«${titleName}»</b>`;
         return boldTitleName;
     }
@@ -97,9 +98,27 @@ module.exports = class ClubhouseParser {
     async getDescription() {
         const unformattedDescription = await this.getNodeTextFromQuerySelector('div.text-sm.font-thin.mt-2');
         const unusedPart = await this.getNodeTextFromQuerySelector('div.text-sm.font-thin.mt-2 em');
+        let appendDot = true;
 
-        const slicedDescription = unformattedDescription.replace(unusedPart, '').trim();
-        const formattedDescription = `«${slicedDescription.substring(1).trim()}»\n`;
+        let slicedDescription = unformattedDescription.replace(unusedPart, '').trim().substring(1).trim();
+        if (slicedDescription.charAt(0) === '.') {
+            slicedDescription = slicedDescription.substring(1).trim();
+        }
+        if (slicedDescription.charAt(slicedDescription.length - 1) === '.') {
+            slicedDescription = slicedDescription.substring(0, slicedDescription.length - 1);
+        }
+        if (slicedDescription.charAt(slicedDescription.length - 1).match(/\?|\!/gm)) {
+            appendDot = false;
+        }
+
+        slicedDescription = slicedDescription.replace(/“|”|«|»/gm, '"');
+
+        let formattedDescription = `«${slicedDescription.trim()}»`;
+
+        if (appendDot) {
+            formattedDescription = formattedDescription.concat('.');
+        }
+        formattedDescription = formattedDescription.concat('\n');
 
         return slicedDescription.length > 0 ? formattedDescription : slicedDescription;
     }

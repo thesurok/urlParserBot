@@ -11,6 +11,9 @@ const bot = new Telegraf(BOT_TOKEN);
 parser.init().then(run);
 
 function run() {
+    bot.start((ctx) => {
+        ctx.reply(`Привет, ${ctx.from.first_name}! Отправь мне ссылку на предстоящую комнату, и её для тебя красиво отформатирую`);
+    });
     bot.on('text', (ctx) => {
         const { text } = ctx.message;
         parser.parseUrls(text).then((res, rej) => {
@@ -18,7 +21,6 @@ function run() {
         })
             .catch(err => {
                 console.log(err);
-                ctx.reply("ERROR!");
             });
     });
 

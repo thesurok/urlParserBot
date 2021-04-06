@@ -90,7 +90,7 @@ module.exports = class ClubhouseParser {
         format = unformattedDate.replace(/\(|\)/gm, '').trim();
 
         const formattedDate = `${month} ${date} ${time} ${ampm} ${format}`
-        const formattedTime = moment(formattedDate).utcOffset(2).format('HH:mm');
+        const formattedTime = moment(formattedDate).utcOffset(3).format('HH:mm');
         return formattedTime;
     }
 
